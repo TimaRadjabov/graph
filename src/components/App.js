@@ -20,7 +20,11 @@ const formatMonth = (dateString) => {
   return `${month}/${year}`;
 };
 const formatDate = (dateString) => {
-  const [day, month, year] = dateString.split(".");
+  const today = new Date();
+  let [day, month, year] = dateString.split(".");
+  if (today.setHours(0, 0, 0, 0) === new Date(year, month - 1, day).getTime()) {
+    day = "->" + day;
+  }
   return `${day}`;
 };
 
@@ -45,7 +49,13 @@ const App = () => {
       barGap={0}
       baseValue="dataMin"
     >
-      <XAxis dataKey="date" xAxisId={0} tickFormatter={formatDate} />
+      <XAxis
+        dataKey="date"
+        xAxisId={0}
+        tickFormatter={(value) => {
+          return formatDate(value);
+        }}
+      />
       <XAxis
         dataKey="date"
         xAxisId={1}
@@ -60,7 +70,8 @@ const App = () => {
         />
       ))}
       <Tooltip
-        contentStyle={{ display: "none" }} cursor={{ stroke: "rgba(255, 255, 255, 0.1)", strokeWidth: 1.5 }}
+        contentStyle={{ display: "none" }}
+        cursor={{ stroke: "rgba(255, 255, 255, 0.1)", strokeWidth: 1.5 }}
       />
       <YAxis orientation="right" axisLine={false} tickLine={false} />
       <defs>
