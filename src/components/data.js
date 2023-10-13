@@ -1,313 +1,520 @@
-export const data = [
-  { date: "30.09.2023", entrance: 100, shipment: 0, amount: 500, stocks: 320 },
-  { date: "01.10.2023", entrance: 100, shipment: 0, amount: 500, stocks: 320 },
-  { date: "02.10.2023", entrance: 100, shipment: 0, amount: 500, stocks: 280 },
-  { date: "03.10.2023", entrance: 100, shipment: 0, amount: 500, stocks: 300 },
-  {
-    date: "04.10.2023",
-    entrance: 100,
-    shipment: 250,
-    amount: 500,
-    stocks: 270,
-  },
-  { date: "05.10.2023", entrance: 100, shipment: 0, amount: 500, stocks: 300 },
-  { date: "06.10.2023", entrance: 100, shipment: 0, amount: 500, stocks: 180 },
-  {
-    date: "07.10.2023",
-    entrance: 100,
-    shipment: 190,
-    amount: 460,
-    stocks: 270,
-  },
-  { date: "08.10.2023", entrance: 100, shipment: 0, amount: 460, stocks: 210 },
-  { date: "09.10.2023", entrance: 100, shipment: 0, amount: 460, stocks: 300 },
-  { date: "10.10.2023", entrance: 100, shipment: 0, amount: 460, stocks: 270 },
-  { date: "11.10.2023", entrance: 100, shipment: 0, amount: 460, stocks: 320 },
-  {
-    date: "12.10.2023",
-    entrance: 100,
-    shipment: 250,
-    amount: 420,
-    stocks: 400,
-  },
-  { date: "13.10.2023", entrance: 100, shipment: 0, amount: 420, stocks: 340 },
-  { date: "14.10.2023", entrance: 100, shipment: 0, amount: 420, stocks: 300 },
-  { date: "15.10.2023", entrance: 100, shipment: 0, amount: 380, stocks: 360 },
-  { date: "16.10.2023", entrance: 100, shipment: 0, amount: 380, stocks: 310 },
-  {
-    date: "17.10.2023",
-    entrance: 100,
-    shipment: 220,
-    amount: 380,
-    stocks: 370,
-  },
-  {
-    date: "18.10.2023",
-    entrance: 100,
-    shipment: 250,
-    amount: 380,
-    stocks: 330,
-  },
-  { date: "19.10.2023", entrance: 100, shipment: 0, amount: 380, stocks: 330 },
-  { date: "20.10.2023", entrance: 100, shipment: 0, amount: 380, stocks: 350 },
-  { date: "21.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 330 },
-  { date: "22.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 360 },
-  { date: "23.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 430 },
-  {
-    date: "24.10.2023",
-    entrance: 100,
-    shipment: 130,
-    amount: 360,
-    stocks: 400,
-  },
-  { date: "25.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 380 },
-  { date: "26.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  {
-    date: "27.10.2023",
-    entrance: 100,
-    shipment: 220,
-    amount: 360,
-    stocks: 400,
-  },
-  { date: "28.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 390 },
-  { date: "29.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 430 },
-  { date: "30.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "31.10.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "01.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "02.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "03.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "04.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "05.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "06.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "07.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "08.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "09.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "10.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-  { date: "11.11.2023", entrance: 100, shipment: 0, amount: 360, stocks: 420 },
-];
-export const newData = [
+export const capacityData = [
   {
     date: "01.10.2023",
-    entrance: { fact: 100, predict: 0, plan: 0 },
-    shipment: { fact: 0, predict: 0, plan: 0 },
-    stocks: {fact: 330, predict: 0},
     amount: 500,
   },
   {
     date: "02.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 200, predict: 0 },
-    stocks: {fact: 300, predict: 0},
     amount: 500,
   },
   {
     date: "03.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 320, predict: 0},
     amount: 500,
   },
   {
     date: "04.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 300, predict: 0},
     amount: 400,
   },
   {
     date: "05.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 350, predict: 0},
     amount: 400,
   },
   {
     date: "06.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 300, predict: 0 },
-    stocks: {fact: 370, predict: 0},
     amount: 400,
   },
   {
     date: "07.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 320, predict: 0},
     amount: 400,
   },
   {
     date: "08.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 150, predict: 0 },
-    stocks: {fact: 350, predict: 0},
     amount: 400,
   },
   {
     date: "09.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 330, predict: 0},
     amount: 400,
   },
   {
     date: "10.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 150, predict: 0 },
-    stocks: {fact: 350, predict: 0},
     amount: 400,
   },
   {
     date: "11.10.2023",
-    entrance: { fact: 100, predict: 0 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 380, predict: 0},
     amount: 400,
   },
   {
     date: "12.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 120, predict: 350},
     amount: 400,
   },
   {
     date: "13.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 330},
     amount: 400,
   },
   {
     date: "14.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 100 },
-    stocks: {fact: 0, predict: 350},
     amount: 400,
   },
   {
     date: "15.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 320},
     amount: 350,
   },
   {
     date: "16.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 350},
     amount: 350,
   },
   {
     date: "17.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "18.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "19.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "20.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "21.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "22.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 120 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "23.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 100 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "24.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "25.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 150 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "26.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "27.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "28.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 200 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "29.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 300 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "30.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "31.10.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
   },
   {
     date: "01.11.2023",
-    entrance: { fact: 0, predict: 100 },
-    shipment: { fact: 0, predict: 0 },
-    stocks: {fact: 0, predict: 420},
     amount: 350,
+  },
+];
+export const areaData = [
+  {
+    date: "01.10.2023",
+    stocks: { fact: 330, predict: 0 },
+  },
+  {
+    date: "02.10.2023",
+    stocks: { fact: 300, predict: 0 },
+  },
+  {
+    date: "03.10.2023",
+    stocks: { fact: 320, predict: 0 },
+  },
+  {
+    date: "04.10.2023",
+    stocks: { fact: 300, predict: 0 },
+  },
+  {
+    date: "05.10.2023",
+    stocks: { fact: 350, predict: 0 },
+  },
+  {
+    date: "06.10.2023",
+    stocks: { fact: 370, predict: 0 },
+  },
+  {
+    date: "07.10.2023",
+    stocks: { fact: 320, predict: 0 },
+  },
+  {
+    date: "08.10.2023",
+    stocks: { fact: 350, predict: 0 },
+  },
+  {
+    date: "09.10.2023",
+    stocks: { fact: 330, predict: 0 },
+  },
+  {
+    date: "10.10.2023",
+    stocks: { fact: 350, predict: 0 },
+  },
+  {
+    date: "11.10.2023",
+    stocks: { fact: 380, predict: 0 },
+  },
+  {
+    date: "12.10.2023",
+    stocks: { fact: 120, predict: 350 },
+  },
+  {
+    date: "13.10.2023",
+    stocks: { fact: 0, predict: 330 },
+  },
+  {
+    date: "14.10.2023",
+    stocks: { fact: 0, predict: 350 },
+  },
+  {
+    date: "15.10.2023",
+    stocks: { fact: 0, predict: 320 },
+  },
+  {
+    date: "16.10.2023",
+    stocks: { fact: 0, predict: 350 },
+  },
+  {
+    date: "17.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "18.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "19.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "20.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "21.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "22.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "23.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "24.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "25.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "26.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "27.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "28.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "29.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "30.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "31.10.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+  {
+    date: "01.11.2023",
+    stocks: { fact: 0, predict: 420 },
+  },
+];
+export const entranceData = [
+  {
+    date: "01.10.2023",
+    entrance: { fact: 100, predict: 0, plan: 0 },
+  },
+  {
+    date: "02.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "03.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "04.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "05.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "06.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "07.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "08.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "09.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "10.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "11.10.2023",
+    entrance: { fact: 100, predict: 0 },
+  },
+  {
+    date: "12.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "13.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "14.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "15.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "16.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "17.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "18.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "19.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "20.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "21.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "22.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "23.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "24.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "25.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "26.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "27.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "28.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "29.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "30.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "31.10.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+  {
+    date: "01.11.2023",
+    entrance: { fact: 0, predict: 100 },
+  },
+];
+export const shipmentData = [
+  {
+    date: "01.10.2023",
+    shipment: { fact: 0, predict: 0, plan: 0 },
+  },
+  {
+    date: "02.10.2023",
+    shipment: { fact: 200, predict: 0 },
+  },
+  {
+    date: "03.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "04.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "05.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "06.10.2023",
+    shipment: { fact: 300, predict: 0 },
+  },
+  {
+    date: "07.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "08.10.2023",
+    shipment: { fact: 150, predict: 0 },
+  },
+  {
+    date: "09.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "10.10.2023",
+    shipment: { fact: 150, predict: 0 },
+  },
+  {
+    date: "11.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "12.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "13.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "14.10.2023",
+    shipment: { fact: 0, predict: 100 },
+  },
+  {
+    date: "15.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "16.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "17.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "18.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "19.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "20.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "21.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "22.10.2023",
+    shipment: { fact: 0, predict: 120 },
+  },
+  {
+    date: "23.10.2023",
+    shipment: { fact: 0, predict: 100 },
+  },
+  {
+    date: "24.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "25.10.2023",
+    shipment: { fact: 0, predict: 150 },
+  },
+  {
+    date: "26.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "27.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "28.10.2023",
+    shipment: { fact: 0, predict: 200 },
+  },
+  {
+    date: "29.10.2023",
+    shipment: { fact: 0, predict: 300 },
+  },
+  {
+    date: "30.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "31.10.2023",
+    shipment: { fact: 0, predict: 0 },
+  },
+  {
+    date: "01.11.2023",
+    shipment: { fact: 0, predict: 0 },
   },
 ];

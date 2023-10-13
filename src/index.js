@@ -6,6 +6,6 @@ import "./style.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <App capacity={true} area={true} entrance={"line"} shipment={"bar"}/>
   </React.StrictMode>
 );
