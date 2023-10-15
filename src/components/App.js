@@ -10,8 +10,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import {
-  data,
-  newData,
   areaData,
   capacityData,
   entranceData,
@@ -37,19 +35,19 @@ const mainData = combinateData(
   entranceData,
   shipmentData
 );
-console.log(mainData);
+
 
 const App = ({ capacity, area, entrance, shipment }) => {
-  const haspredict = newData.filter((item) => item.stocks.predict);
+  const haspredict = mainData.filter((item) => item.stocks.predict);
   const stocks = haspredict.findIndex(
     (item) => item.amount <= item.stocks.predict
   );
   const pers = ((stocks - 1) / (haspredict.length - 1)) * 100;
 
-  const formatMonth = (dateString) => {
-    const [day, month, year] = dateString.split(".");
-    return `${month}/${year}`;
-  };
+  // const formatMonth = (dateString) => {
+  //   const [day, month, year] = dateString.split(".");
+  //   return `${month}/${year}`;
+  // };
   const formatDate = (dateString) => {
     const today = new Date();
     let [day, month, year] = dateString.split(".");
@@ -181,7 +179,7 @@ const App = ({ capacity, area, entrance, shipment }) => {
             tickFormatter={formatMonth}
             tickLine={false}
           /> */}
-          {data.map((entry) => (
+          {mainData.map((entry) => (
             <ReferenceLine
               key={entry.date}
               x={entry.date}

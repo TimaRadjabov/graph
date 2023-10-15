@@ -1,15 +1,15 @@
 export const capacityData = [
   {
     date: "01.10.2023",
-    amount: 500,
+    amount: 600,
   },
   {
     date: "02.10.2023",
-    amount: 500,
+    amount: 600,
   },
   {
     date: "03.10.2023",
-    amount: 500,
+    amount: 600,
   },
   {
     date: "04.10.2023",
