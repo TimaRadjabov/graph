@@ -9,12 +9,11 @@ import {
   Area,
   ResponsiveContainer,
 } from "recharts";
-import {
-  areaData,
-  capacityData,
-  entranceData,
-  shipmentData,
-} from "./data";
+// import { areaData, capacityData, entranceData, shipmentData } from "./data";
+
+import "./App.sass";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const combinateData = (...extra) => {
   let result = extra[0].map((item, i) => {
@@ -29,25 +28,54 @@ const combinateData = (...extra) => {
   });
   return result;
 };
-const mainData = combinateData(
-  areaData,
-  capacityData,
-  entranceData,
-  shipmentData
-);
+// const mainData = combinateData(
+//   areaData,
+//   capacityData,
+//   entranceData,
+//   shipmentData
+// );
 
+const App = ({ capacity, stock, entrance, shipment }) => {
+  const [mainData, setMainData] = useState(null);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [response1, response2, response3, response4] = await Promise.all([
+          axios.get("http://localhost:3000/stocksData"),
+          axios.get("http://localhost:3000/capacityData"),
+          axios.get("http://localhost:3000/entranceData"),
+          axios.get("http://localhost:3000/shipmentData"),
+        ]);
 
-const App = ({ capacity, area, entrance, shipment }) => {
-  const haspredict = mainData.filter((item) => item.stocks.predict);
-  const stocks = haspredict.findIndex(
+        const stocksData = response1.data;
+        const capacityData = response2.data;
+        const entranceData = response3.data;
+        const shipmentData = response4.data;
+
+        const combinedResult = combinateData(
+          stocksData,
+          capacityData,
+          entranceData,
+          shipmentData
+        );
+
+        setMainData(combinedResult);
+      } catch (error) {
+        console.error("Ошибка при выполнении запросов:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+  const haspredict = mainData?.filter((item) => item.stocks.predict);
+  const stocks = haspredict?.findIndex(
     (item) => item.amount <= item.stocks.predict
   );
-  const pers = ((stocks - 1) / (haspredict.length - 1)) * 100;
+  const pers = ((stocks) / (haspredict?.length)) * 100;
+  console.log(haspredict);
+  console.log(stocks);
+  console.log(pers);
 
-  // const formatMonth = (dateString) => {
-  //   const [day, month, year] = dateString.split(".");
-  //   return `${month}/${year}`;
-  // };
   const formatDate = (dateString) => {
     const today = new Date();
     let [day, month, year] = dateString.split(".");
@@ -64,9 +92,12 @@ const App = ({ capacity, area, entrance, shipment }) => {
     const { x, y, index } = props;
     if (index === 0) {
       return (
-        <text x={x} y={y + 4} fill="rgba(255, 255, 255, 0.7)" fontSize={13}>
-          Вместимость
-        </text>
+        <svg className="label">
+          <rect x={x - 2} y={y - 6} className="label__wrapper" />
+          <text x={x} y={y + 4} className="label__text">
+            Вместимость
+          </text>
+        </svg>
       );
     }
 
@@ -107,20 +138,20 @@ const App = ({ capacity, area, entrance, shipment }) => {
             dot={false}
             activeDot={false}
           />
-        )
+        );
       case "bar":
         return (
           <Bar
-          dataKey={(value) => {
-            return value.shipment.fact
-              ? value.shipment.fact
-              : value.shipment.predict;
-          }}
-          fill="#00EEA7"
-        />
-        )
-      default: 
-          return 
+            dataKey={(value) => {
+              return value.shipment.fact
+                ? value.shipment.fact
+                : value.shipment.predict;
+            }}
+            fill="#00EEA7"
+          />
+        );
+      default:
+        return;
     }
   };
   const entranceView = () => {
@@ -138,24 +169,78 @@ const App = ({ capacity, area, entrance, shipment }) => {
             dot={false}
             activeDot={false}
           />
-        )
+        );
       case "bar":
         return (
           <Bar
-          dataKey={(value) => {
-            return value.entrance.fact
-              ? value.entrance.fact
-              : value.entrance.predict;
-          }}
-          fill="#0081DF"
-        />
-        )
-      default: 
-          return 
+            dataKey={(value) => {
+              return value.entrance.fact
+                ? value.entrance.fact
+                : value.entrance.predict;
+            }}
+            fill="#0081DF"
+          />
+        );
+      default:
+        return;
+    }
+  };
+  const stocksView = () => {
+    switch (stock) {
+      case "line":
+        return (
+          <>
+              <Area
+                dataKey={(value) => {
+                  return pastDays(value);
+                }}
+                stackId="0"
+                activeDot={false}
+                connectNulls
+                fill="rgba(0,0,0,40%)"
+                stroke="#5F5F5F"
+              />
+              <Area
+                dataKey={(value) => {
+                  return futureDays(value);
+                }}
+                stackId="1"
+                fill={`url(#colorUv)`}
+                stroke={`url(#colorStrike)`}
+                activeDot={false}
+              />
+            </>
+        );
+      case "bar":
+        return (
+          <>
+              <Bar
+                dataKey={(value) => {
+                  return pastDays(value);
+                }}
+                stackId="0"
+                activeDot={false}
+                connectNulls
+                fill="rgba(0,0,0,40%)"
+                stroke="#5F5F5F"
+              />
+              <Bar
+                dataKey={(value) => {
+                  return futureDays(value);
+                }}
+                stackId="1"
+                fill={`url(#colorUv)`}
+                stroke={`url(#colorStrike)`}
+                activeDot={false}
+              />
+            </>
+        );
+      default:
+        return;
     }
   };
   return (
-    <div style={{ width: "1260px", height: "450px" }}>
+    <div className="wrappper">
       <ResponsiveContainer width="99%" height="100%">
         <ComposedChart
           width={1260}
@@ -171,7 +256,8 @@ const App = ({ capacity, area, entrance, shipment }) => {
             tickFormatter={(value) => {
               return formatDate(value);
             }}
-            interval={mainData.length > 30 ? 1 : 0}
+            interval={mainData?.length > 30 ? 1 : 0}
+            scale="point"
           />
           {/* <XAxis
             dataKey="date"
@@ -179,7 +265,7 @@ const App = ({ capacity, area, entrance, shipment }) => {
             tickFormatter={formatMonth}
             tickLine={false}
           /> */}
-          {mainData.map((entry) => (
+          {mainData?.map((entry) => (
             <ReferenceLine
               key={entry.date}
               x={entry.date}
@@ -220,34 +306,11 @@ const App = ({ capacity, area, entrance, shipment }) => {
               activeDot={false}
             />
           )}
-          {area && (
-            <>
-              <Area
-                dataKey={(value) => {
-                  return pastDays(value);
-                }}
-                stackId="0"
-                activeDot={false}
-                connectNulls
-                fill="rgba(0,0,0,40%)"
-                stroke="#5F5F5F"
-              />
-              <Area
-                dataKey={(value) => {
-                  return futureDays(value);
-                }}
-                stackId="1"
-                fill={`url(#colorUv)`}
-                stroke={`url(#colorStrike)`}
-                activeDot={false}
-              />
-            </>
-          )}
+          {stocksView()}
         </ComposedChart>
       </ResponsiveContainer>
     </div>
   );
 };
-
 
 export default App;
