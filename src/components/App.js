@@ -9,11 +9,11 @@ import {
   Area,
   ResponsiveContainer,
 } from "recharts";
-// import { areaData, capacityData, entranceData, shipmentData } from "./data";
 
 import "./App.sass";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Graph from "./Graph/Graph";
 
 const combinateData = (...extra) => {
   let result = extra[0].map((item, i) => {
@@ -28,12 +28,6 @@ const combinateData = (...extra) => {
   });
   return result;
 };
-// const mainData = combinateData(
-//   areaData,
-//   capacityData,
-//   entranceData,
-//   shipmentData
-// );
 
 const App = ({ capacity, stock, entrance, shipment }) => {
   const [mainData, setMainData] = useState(null);
@@ -72,9 +66,6 @@ const App = ({ capacity, stock, entrance, shipment }) => {
     (item) => item.amount <= item.stocks.predict
   );
   const pers = ((stocks) / (haspredict?.length)) * 100;
-  console.log(haspredict);
-  console.log(stocks);
-  console.log(pers);
 
   const formatDate = (dateString) => {
     const today = new Date();
@@ -293,8 +284,17 @@ const App = ({ capacity, stock, entrance, shipment }) => {
               <stop offset="100%" stopColor="red" />
             </linearGradient>
           </defs>
+          <Bar
+          dataKey={(values) => {
+            return values.shipment.fact
+              ? values.shipment.fact
+              : values.shipment.predict;
+          }}
+          fill="#00EEA7"
+        />
+          <Graph chartType="histogram" chartColor="green" values={mainData}/>
           {entranceView()}
-          {shipmentView()}
+          {/* {shipmentView()} */}
           {capacity && (
             <Line
               type="stepAfter"
