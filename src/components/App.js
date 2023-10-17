@@ -292,7 +292,6 @@ const App = ({ capacity, stock, entrance, shipment }) => {
           }}
           fill="#00EEA7"
         />
-          <Graph chartType="histogram" chartColor="green" values={mainData}/>
           {entranceView()}
           {/* {shipmentView()} */}
           {capacity && (

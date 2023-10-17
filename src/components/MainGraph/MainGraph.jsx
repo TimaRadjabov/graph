@@ -102,16 +102,14 @@ const MainGraph = () => {
             cursor={{ stroke: "rgba(255, 255, 255, 0.1)", strokeWidth: 1.5 }}
           />
           <YAxis orientation="right" axisLine={false} tickLine={false} />
-          <Bar
-            dataKey={(value) => {
-              return value.shipment.fact;
-            }}
-          />
-          {mainData?.map((entry) => (
-            <Graph chartType="histogram" chartColor="green" values={entry} key={entry.date}/>
-          ))}
+          <Bar dataKey={value => {
+            return value.shipment.fact
+          }} />
+        
+            <Graph chartType="histogram" chartColor="green" values={mainData} />
         </ComposedChart>
       </ResponsiveContainer>
+    
     </div>
   );
 };
