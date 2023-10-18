@@ -56,16 +56,20 @@ const formatDate = (dateString) => {
   return `${day}`;
 };
 
-const charts = (data, chartType, chartColor) => {
+const charts = (data, chartType, chartColor, chartDisplayType) => {
   const optionsChart = {
     data,
     type: chartType === "histogram" ? "bar" : "line",
     label: "",
     backgroundColor:
-      chartColor === "green"
-        ? "#00EEA7"
-        : chartColor === "blue"
-        ? "#0081DF"
+      chartColor === "green" && chartDisplayType === "primary"
+        ? "rgb(0, 238, 167)"
+        : chartColor === "green" && chartDisplayType === "secondary"
+        ? "rgba(0, 238, 167, 0.4)"
+        : chartColor === "blue" && chartDisplayType === "primary"
+        ? "rgb(0, 129, 223)"
+        : chartColor === "blue" && chartDisplayType === "secondary"
+        ? "rgba(0, 129, 223, 0.4)"
         : "rgba(255, 255, 255, 0.4)",
     borderDash: chartType === "horizontalLineGraph" ? [5, 5] : [],
     borderColor: "rgba(255, 255, 255, 0.4)",
@@ -111,11 +115,17 @@ export default function Graph() {
 
   const labels = mainData?.map((item) => formatDate(item.date));
 
-  const shipmentData = mainData?.map((item) =>
-    item.shipment.fact ? item.shipment.fact : item.shipment.predict
+  const shipmentFactData = mainData?.map((item) =>
+    item.shipment.fact ? item.shipment.fact : null
   );
-  const entranceData = mainData?.map((item) =>
-    item.entrance.fact ? item.entrance.fact : item.entrance.predict
+  const shipmentPredictData = mainData?.map((item) =>
+    item.shipment.predict ? item.shipment.predict : null
+  );
+  const entranceFactData = mainData?.map((item) =>
+    item.entrance.fact ? item.entrance.fact : null
+  );
+  const entrancePredictData = mainData?.map((item) =>
+    item.entrance.predict ? item.entrance.predict : null
   );
   const stocksFactData = mainData?.map((item) =>
     item.stocks.fact ? item.stocks.fact : null
@@ -128,8 +138,10 @@ export default function Graph() {
   const data = {
     labels,
     datasets: [
-      charts(shipmentData, "histogram", "green"),
-      charts(entranceData, "histogram", "blue"),
+      charts(shipmentFactData, "histogram", "green", "secondary"),
+      charts(shipmentPredictData, "histogram", "green", "primary"),
+      charts(entranceFactData, "histogram", "blue", "secondary"),
+      charts(entrancePredictData, "histogram", "blue", "primary"),
       charts(amountData, "horizontalLineGraph", "grey"),
       charts(stocksFactData, "lineGraph", "grey"),
       charts(stocksPredictData, "lineGraph", "grey"),
@@ -147,18 +159,17 @@ export default function Graph() {
             plugins: {
               legend: false,
             },
+            tooltip: {
+              mode: 'x',
+              intersect: false
+          },
             scales: {
               x: {
                 grid: {
                   color: "rgba(255, 255, 255, 0.05)",
                 },
-                border: {
-                  width: 2,
-                  color: 'rgba(255, 255, 255, 0.05)',
-                },
-                type: "category",
-                offset: true,
-                beginAtZero: false,
+                offset: false,
+                beginAtZero: true,
               },
               y: {
                 position: "right",

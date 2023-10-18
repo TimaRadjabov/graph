@@ -8,9 +8,9 @@ import Graph from "./components/Graph/Graph";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <App capacity={true} stock={"line"} entrance={"bar"} shipment={"bar"}/> */}
-    {/* <MainGraph /> */}
-    <Graph />
+    {/* <App capacity={true} stock={"line"} entrance={"bar"} shipment={"bar"}/>  */}
+    <MainGraph />
+    {/* <Graph /> */}
     
   </React.StrictMode>
 );
